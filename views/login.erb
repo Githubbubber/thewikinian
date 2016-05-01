@@ -1,0 +1,16 @@
+<% if current_user %><%= current_user["username"] %><% end %>
+<h2>Log In</h2><% if @submitted %><h3>
+        Incorrect username or password!</h3><% end %>
+<form action="/login" method="post">
+  <label for="username">Username: </label>
+  <input name="username" type="text" autofocus required />
+  <br />
+  <label for="password">Password: </label>
+  <input name="password" type="password" required />
+  <br />
+  <button type="submit">Log In</button>
+</form><br>
+<br>
+Ex: <br>
+donavon <br>
+I0BiZjY4

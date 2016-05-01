@@ -1,0 +1,21 @@
+<% if current_user %><%= current_user["username"] %><% end %>
+<h2>Sign Up</h2><% if @submitted %><h3>PLEASE ENTER ALL FIELDS, CORRECTLY!</h3><% end %>
+<form action="/signup" method="post">
+  <label for="username">Username: </label>
+  <input name="username" type="text" autofocus maxlength=25 title="Please choose a username with up to 25 characters" required />
+  <br />
+  <label for="email">Email: </label>
+  <input name="email" type="email" maxlength=50 title="Emails cannot be longer than 50 characters" required />
+  <br />
+  <label for="password">Password: </label>
+  <input name="pass_first" type="password" pattern="[\W\w]{8,15}" title="Password must be between 8 and 15 characters long" required />
+  &nbsp; Confirm password:
+  <input name="pass_confirm" type="password" pattern="[\W\w]{8,15}" required />
+  <br />
+  <label for="profile_pic">Profile pic (url): </label>
+  <input name="profile_pic" type="url" placeholder="http://www.url.com/pic.png" maxlength=225 title="Pics must be hosted online" />
+  <br />
+  <button type="submit">Sign Up</button>
+</form>
+
+<small>Hover/mouse over any fields for helpful instructions!</small>

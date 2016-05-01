@@ -1,0 +1,337 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  background: #E5E5E5;
+  line-height: 1;
+}
+
+small {
+  font-size: .75em;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+p {
+  line-height: 1em;
+  margin: 1px 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Clearfix */
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Custom Styles */
+
+body {
+  background: #FFF5E5;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+  font-size: 1em;
+}
+
+a.logo {
+  display: block;
+  background: url(../img/thewiki.png) 0 0 no-repeat;
+  height: 135px;
+  width: 299px;
+  float: left;
+}
+
+div.wrapper {
+  width: 1080px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 30px;
+  border-bottom: 8px solid #000;
+
+}
+
+#hideEdit, #hideNew {
+  display: none;
+  margin-top: 9%;
+}
+
+#hideDelete {
+  display: none;
+  margin-top: 9%;
+  color: red;
+}
+
+.main-container {
+  position: relative;
+  margin: 0 auto;
+  padding: 30px;
+  width: 800px;
+  height: 727px;
+}
+
+
+ul.main_navigation {
+  float: right;
+  margin: 0;
+  padding: 0;
+  margin: 40px 0 0 0;
+}
+
+ul.main_navigation li {
+  display: inline-block;
+  font-size: 20px;
+  position: relative;
+}
+
+ul.main_navigation a {
+  font-family: "Georgia";
+  font-style: italic;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px;
+  display: inline-block;
+}
+
+ul.main_navigation a:hover,
+ul.main_navigation a.hover {
+  background: #de5a51;
+  color: #fff;
+}
+
+ul.main_navigation li ul.sub_main_navigation {
+  position: absolute;
+  top: 44px;
+  background: #000;
+  display: none;
+}
+
+ul.main_navigation li ul.sub_main_navigation a {
+  min-width: 200px;
+  color: #fff;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 60px;
+  text-align: center;
+  display: block;
+  margin: 40px;
+  color: #de5a51;
+}
+
+h1.login {
+  position: absolute;
+  top: 300px;
+  left: 44px;
+  width: 200px;
+  background: #69C;
+  color: #fff;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 19px;
+  text-align: center;
+  display: block;
+  margin: 40px;
+}
+
+.slider_container {
+  overflow: hidden;
+  height: 400px;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+ul.slider li {
+  display: block;
+  height: 400px;
+  width: 800px;
+  margin: 0 auto;
+  float: left;
+}
+
+ul.slider li.slide-1 {
+  background: url(../img/pseudo_code_1.jpg) 0 0 no-repeat;
+  background-size: cover;
+}
+
+ul.slider li.slide-2 {
+  background: url(../img/pseudo_code_2.jpg) 0 0 no-repeat;
+  background-size: cover;
+}
+
+ul.slider li.slide-3 {
+  background: url(../img/pseudo_code_3.jpg) 0 0 no-repeat;
+  background-size: cover;
+}
+
+/* Info Boxes */
+
+ul.info { margin: 0 auto; }
+
+ul.info li {
+  display: block;
+  width: 266px;
+  float: left;
+  margin: 20px;
+  padding: 20px;
+  line-height: 1.6em;
+}
+
+ul.info li strong {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  margin: 12px 0;
+  color: #de5a51;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #de5a51;
+}
+
+/* Recent Work */
+
+ul.recent_work { margin: 0 auto; width: 880px; }
+
+ul.recent_work li {
+  float: left;
+  margin: 10px;
+  opacity: .3;
+}
+
+ul.recent_work li:hover {
+  opacity: 1;
+}
+
+a.cta {
+  display: block;
+  margin: 40px auto 0 auto;
+  width: 300px;
+  background: #DE5A51;
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a.cta:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Contact */
+
+form.contact {
+  width: 600px;
+  background: #FBE0B6;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+form.contact div.input-row {
+padding: 6px;
+}
+
+form.contact div.input-row label {
+vertical-align: top;
+font-size: 22px;
+display: inline-block;
+width: 120px;
+}
+
+form.contact div.input-row input[type="text"] {
+font-size: 22px;
+width: 440px;
+height: 30px;
+padding: 6px;
+border: 1px solid #bbb;
+}
+
+form.contact div.input-row textarea {
+font-size: 22px;
+padding: 6px;
+width: 440px;
+height: 200px;
+border: 1px solid #bbb;
+}
+
+form.contact div.input-row input[type="submit"] {
+font-size: 22px;
+border: 1px solid #bbb;
+margin-left: 126px;
+background: #DE5A51;
+padding: 6px 20px;
+cursor: pointer;
+}
+
+p.contact-submitted {
+text-align: center;
+font-size: 22px;
+}
+
+
+
+/* Footer */
+
+.footer {
+  margin-top: 120px;
+  border-top: 8px solid #000;
+  padding: 30px 30px 120px 30px;
+}
+
+.footer p { float: left; }
+.footer ul.footer_navigation { float: right; }
+
+.footer ul.footer_navigation li { display: inline-block; margin-right: 8px; }
+.footer ul.footer_navigation li a { color: #de5a51; text-decoration: none; }
+.footer ul.footer_navigation li a:hover { color: #000; text-decoration: none; }
