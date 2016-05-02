@@ -13,7 +13,7 @@ require 'pg'
 module TheWikinian
   class Server < Sinatra::Base
 
-    # set :method_override, true
+    set :method_override, true
 
     enable :sessions
 
@@ -55,34 +55,40 @@ module TheWikinian
     get "/articles/:id" do
       current_user
       @article_id = params[:id].to_i
-      @article = conn.exec "SELECT a.*, c.a_id, c.tag, coll.id, coll.username, ts.latest_post_ts FROM articles AS a LEFT JOIN categories AS c ON (c.a_id = a.id) LEFT JOIN colleagues AS coll ON (coll.id = a.c_id) LEFT JOIN timestamps AS ts ON (ts.a_id = a.id) WHERE a.id = #{@article_id}"
+      @article = conn.exec "SELECT a.*, c.a_id, c.tag, coll.id, coll.username, edits.latest_body, ts.latest_post_ts FROM articles AS a LEFT JOIN categories AS c ON (c.a_id = a.id) LEFT JOIN edits ON (edits.c_id = a.c_id) LEFT JOIN colleagues AS coll ON (coll.id = a.c_id) LEFT JOIN timestamps AS ts ON (ts.a_id = a.id) WHERE a.id = #{@article_id}"
       # binding.pry
       erb :articles
     end
 
     post "/articles" do
       if logged_in?
-        @title = params[:title]
-        # @user = params[:user]
-        @body = params[:body]
+        @title = params[:title_new]
+        @id = params[:article_id_new].to_i
+        @body = params[:body_new]
+        @cat = params[:cat]
         # binding.pry
-        conn.exec_params("INSERT INTO articles (title, c_id, original_body) VALUES ($1, $2, $3)", [@title,
-          session[:user_id], @body])
+        conn.exec_params("INSERT INTO articles (title, c_id, original_body) VALUES ($1, $2, $3)", [@title, @id, @body])
+        conn.exec_params("UPDATE edits SET a_id = $1,latest_body = $2 WHERE c_id = #{@coll_id}", [@article_id, @latest_body])
+        conn.exec_params("UPDATE categories SET tag = $1 WHERE a_id = #{@article_id}", [@cat])
         redirect "/articles"
       else
         redirect "/"
       end
     end
 
-    put "/articles/:id" do
-      if logged_in?
-      end
-        @article_id = params[:id].to_i
+    put "/articles" do
+        @article_id = params[:article_id].to_i
+        @coll_id = params[:coll_id].to_i
         @title = params[:title]
         @latest_body = params[:body]
-        conn.exec_params("UPDATE articles SET title = $1 WHERE id = #{@article_id}", [@title])
+        @cat = params[:cat]
         # binding.pry
-        redirect "/articles"
+        conn.exec_params("UPDATE articles SET title = $1, c_id = $2 WHERE id = #{@article_id}", [@title, @coll_id])
+        conn.exec_params("UPDATE edits SET a_id = $1,latest_body = $2 WHERE c_id = #{@coll_id}", [@article_id, @latest_body])
+        conn.exec_params("UPDATE categories SET tag = $1 WHERE a_id = #{@article_id}", [@cat])
+
+        @article = conn.exec "SELECT a.*, c.a_id, c.tag, coll.id, coll.username, edits.latest_body, ts.latest_post_ts FROM articles AS a LEFT JOIN categories AS c ON (c.a_id = a.id) LEFT JOIN edits ON (edits.c_id = a.c_id) LEFT JOIN colleagues AS coll ON (coll.id = a.c_id) LEFT JOIN timestamps AS ts ON (ts.a_id = a.id) WHERE a.id = #{@article_id}"
+        erb :articles
     end
 
     get "/colleagues" do
