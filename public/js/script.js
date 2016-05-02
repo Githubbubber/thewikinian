@@ -5,7 +5,6 @@ $(document).ready(function(){
   var menu_items = $('.main_navigation li');
   var entryMenu = $("select#changed");
   var editEntry = $("form#hideEdit");
-  var deleteEntry = $("form#hideDelete");
   var newEntry = $("form#hideNew");
   var newArticle = $("button#newArticle");
 
@@ -20,11 +19,11 @@ $(document).ready(function(){
   entryMenu.change(function() {
     if (entryMenu.val()==="edit") {
       editEntry.css("display","block");
-      deleteEntry.css("display","none");
+      $("input#_method").val() = "put";
+      $("textarea#body").text() = $("p#original_body").text();
     }
-    else if (entryMenu.val()==="d") {
-      editEntry.css("display","none");
-      deleteEntry.css("display","block");
+    else if (entryMenu.val()==="new") {
+      editEntry.css("display","block");
     }
   });
 
