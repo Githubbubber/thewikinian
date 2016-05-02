@@ -93,7 +93,7 @@ div.wrapper {
 
 }
 
-#hideEdit, #hideNew, #hideNew2 {
+#hideNew, #hideNew2, #hideEdit {
   display: none;
   margin-top: 9%;
 }
