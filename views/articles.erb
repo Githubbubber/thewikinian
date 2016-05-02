@@ -8,44 +8,42 @@
     <hr />
   <% end %>
   <% if current_user %>
-    <p id="username"><%= current_user["username"] %></p>
-
     <!-- Write a new article -->
-
     <button id="newArticle">Create article</button>
 
     <form id="hideNew" action="/articles" method="post">
-      <!-- <input type="hidden" name="user" value="<%= current_user %>"> -->
+      <input type="hidden" name="article_id_new" id="article_id_new" value="<%= current_user["id"] %>" />
       <label for="title">Title: </label>
-        <input name="title" type="text" /><br />
+        <input name="title_new" type="text" /><br />
       <label for="body">Article body: </label>
-        <textarea name="body" type="text"></textarea>
+        <textarea name="body_new" type="text"></textarea>
+       <label for="cat">Category: </label>
+        <input name="cat" type="text" minlength="3" maxlength="12" /><br />
       <button type="submit">Submit</button>
     </form>
   <% end %>
 <% else %>
   <article>
     <h2><%= @article[0]["title"] %></h2>
-    <h3>Author: <a href="colleagues/<%= @article[0]["id"] %>"><%= @article[0]["username"] %></a> - <%= @article[0]["latest_post_ts"] %></h3><br />
-    <p id="original_body"><%= @article[0]["original_body"] %><p><br />
+    <h3>Author: <a href="../colleagues/<%= @article[0]["c_id"] %>"><%= @article[0]["username"] %></a> - <%= @article[0]["latest_post_ts"] %></h3><br />
+    <p id="latest_body "><%= @article[0]["latest_body"] %><p><br />
     <p>Category: <%= @article[0]["tag"] %><p>
   </article>
 
   <% if current_user %>
-    <select name="u_or_n" id="changed">
-      <option>Options</option>
-      <option value="edit">Edit article</option>
-      <option value="new">Create new article</option>
-    </select>
+    <button id="changed">Edit article</button>
 
-    <form id="hideEdit" action="/articles/<%= @article[0]['id'] %>" method="post">
-      <input type="hidden" name="_method" id="_method">
+    <form id="hideEdit" action="/articles" method="post">
+      <input type="hidden" name="article_id" value="<%= @article[0]["id"] %>" />
+      <input type="hidden" name="coll_id" value="<%= @article[0]["c_id"] %>" />
+      <input type="hidden" name="_method" id="_method" value="put" />
       <label for="title">Title: </label>
         <input name="title" type="text" /><br />
       <label for="body">Article body: </label>
         <textarea name="body" id="body" type="text" title="What would you like to add to this article?"></textarea>
+      <label for="cat">Category (one word): </label>
+        <input name="cat" type="text" minlength="3" maxlength="12" /><br />
       <button type="submit">Submit</button>
     </form>
-
   <% end %>
 <% end %>

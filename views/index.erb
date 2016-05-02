@@ -1,4 +1,7 @@
-<% if current_user %><%= current_user["username"] %><% end %>
+<% if current_user %>
+  <%= current_user["username"] %>
+<% end %>
+
 <h1>Popular posts</h1>
 <% @articles.each do |article| %>
   <article>
@@ -12,9 +15,9 @@
 
 <h1>Popular contributors</h1>
 <% @articles.each do |article| %>
-  <span>
+  <div class="inline">
     <a href="/colleagues/<%= article["id"] %>">
       <img src="<%= article["profile_pic"] %>" alt="<%= article["username"] %>">
     </a><%= article["username"] %>
-  </span>
+  </div>
 <% end %>

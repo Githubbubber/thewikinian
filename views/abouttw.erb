@@ -1,4 +1,7 @@
-<% if current_user %><%= current_user["username"] %><% end %>
+<% if current_user %>
+  <%= current_user["username"] %>
+<% end %>
+
 <section>
   <h2>The Wikinian</h2>
   <h3><%= @catch_phrase %></h3>
