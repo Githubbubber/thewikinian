@@ -2,7 +2,7 @@ require 'pg'
 
 
 if ENV["RACK_ENV"] == "production"
-    conn = PG.connect(
+    @conn ||= PG.connect(
         dbname: ENV["POSTGRES_DB"],
         host: ENV["POSTGRES_HOST"],
         password: ENV["POSTGRES_PASS"],

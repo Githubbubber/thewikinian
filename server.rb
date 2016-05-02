@@ -23,7 +23,7 @@ module TheWikinian
 
     def conn
         if ENV["RACK_ENV"] == "production"
-            PG.connect(
+            @conn ||= PG.connect(
                 dbname: ENV["POSTGRES_DB"],
                 host: ENV["POSTGRES_HOST"],
                 password: ENV["POSTGRES_PASS"],
