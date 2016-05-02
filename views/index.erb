@@ -2,8 +2,19 @@
 <h1>Popular posts</h1>
 <% @articles.each do |article| %>
   <article>
-    <h2><%= article["title"] %></h2>
-    <h3><%= article["author"] %></h3>
+    <h2><a href="/articles/<%= article["id"] %>">
+    <%= article["title"] %></a></h2>
+    <span><a href="/colleagues/<%= article["c_id"] %>">
+    <%= article["username"] %></a></span>
   </article>
   <hr />
+<% end %>
+
+<h1>Popular contributors</h1>
+<% @articles.each do |article| %>
+  <span>
+    <a href="/colleagues/<%= article["id"] %>">
+      <img src="<%= article["profile_pic"] %>" alt="<%= article["username"] %>">
+    </a><%= article["username"] %>
+  </span>
 <% end %>

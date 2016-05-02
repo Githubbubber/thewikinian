@@ -3,8 +3,7 @@
     <article>
       <h2><a href="/articles/<%= article["id"] %>">
       <%= article["title"] %><a></h2>
-      <h3><%= article["author"] %></h3><br />
-      <p><%= article["original_body"] %><p>
+      <h3><%= article["username"] %></h3>
     </article>
     <hr />
   <% end %>
@@ -16,6 +15,7 @@
     <button id="newArticle">Create article</button>
 
     <form id="hideNew" action="/articles" method="post">
+      <!-- <input type="hidden" name="user" value="<%= current_user %>"> -->
       <label for="title">Title: </label>
         <input name="title" type="text" /><br />
       <label for="body">Article body: </label>
@@ -26,30 +26,26 @@
 <% else %>
   <article>
     <h2><%= @article[0]["title"] %></h2>
-    <h3><%= @article[0]["author"] %></h3><br />
-    <p><%= @article[0]["original_body"] %><p>
+    <h3>Author: <a href="colleagues/<%= @article[0]["id"] %>"><%= @article[0]["username"] %></a> - <%= @article[0]["latest_post_ts"] %></h3><br />
+    <p id="original_body"><%= @article[0]["original_body"] %><p><br />
+    <p>Category: <%= @article[0]["tag"] %><p>
   </article>
 
-  <select name="u_or_d" id="changed">
-    <option>Options</option>
-    <option value="edit">Edit article</option>
-    <option value="d">Delete article</option>
-  </select>
+  <% if current_user %>
+    <select name="u_or_n" id="changed">
+      <option>Options</option>
+      <option value="edit">Edit article</option>
+      <option value="new">Create new article</option>
+    </select>
 
-  <form id="hideEdit" action="/articles/<%= @article[0]['id'] %>" method="post">
-    <input type="hidden" name="_method" value="put">
-    <label for="title">Title: </label>
-      <input name="title" type="text" /><br />
-    <label for="body">Article body: </label>
-      <textarea name="body" type="text"></textarea>
-    <button type="submit">Submit</button>
-  </form>
+    <form id="hideEdit" action="/articles/<%= @article[0]['id'] %>" method="post">
+      <input type="hidden" name="_method" id="_method">
+      <label for="title">Title: </label>
+        <input name="title" type="text" /><br />
+      <label for="body">Article body: </label>
+        <textarea name="body" id="body" type="text" title="What would you like to add to this article?"></textarea>
+      <button type="submit">Submit</button>
+    </form>
 
-  <form id="hideDelete" action="/articles" method="post">
-    <p>Are you sure you want to delete this article?</p>
-    <input type="hidden" name="_method" value="delete" />
-    <input type="radio" name="id" value="<%= @article[0]['id'] %>" /> Yes
-    <input type="radio" /> Never mind<br />
-    <button type="submit">Yes, delete this article</button>
-  </form>
+  <% end %>
 <% end %>
