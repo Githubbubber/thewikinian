@@ -29,4 +29,5 @@ our pretend client for project #2. Henrietta is a business magnate and wants to 
 1. Create a clone in a local directory from Github: 
 
 ## Notes
-- The viewer won't be able to see the form to post an article unless they are logged in.
+- The viewer won't be able to see the form to post an article unless they are logged in, nor will they be able to edit any current articles.
+- Colleagues can delete their own account but cannot delete an article once it's posted. This is to maintain the flow of discussion, as the wiki was originally intended.
