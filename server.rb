@@ -4,7 +4,7 @@ require 'pry'
 require 'pg'
 
 # thewikinian
-#   articles    (id, title, author, original_body)
+#   articles    (id, title, c_id, original_body)
 #   categories  (id, a_id, tag)
 #   colleagues  (id, username, password, email, profile_pic)
 #   edits       (id, a_id, c_id, latest_body)
@@ -12,6 +12,8 @@ require 'pg'
 
 module TheWikinian
   class Server < Sinatra::Base
+
+    # set :method_override, true
 
     enable :sessions
 
@@ -32,7 +34,7 @@ module TheWikinian
     end
 
     get "/" do
-      @articles = conn.exec "SELECT * FROM articles LIMIT 3"
+      @articles = conn.exec "SELECT * FROM articles, colleagues WHERE articles.c_id = colleagues.id LIMIT 3"
       erb :index
     end
 
@@ -44,43 +46,61 @@ module TheWikinian
     end
 
     get "/articles" do
+      logged_in?
       @articles = conn.exec "SELECT * FROM articles"
       # binding.pry
       erb :articles
     end
 
     get "/articles/:id" do
+      current_user
       @article_id = params[:id].to_i
-      @article = conn.exec "SELECT * FROM articles WHERE id=#{@article_id}"
+      @article = conn.exec "SELECT a.*, c.a_id, c.tag, coll.id, coll.username, ts.latest_post_ts FROM articles AS a LEFT JOIN categories AS c ON (c.a_id = a.id) LEFT JOIN colleagues AS coll ON (coll.id = a.c_id) LEFT JOIN timestamps AS ts ON (ts.a_id = a.id) WHERE a.id = #{@article_id}"
       # binding.pry
       erb :articles
     end
 
     post "/articles" do
-      @title = params[:title]
-      @author = current_user["username"]
-      @body = params[:body]
-      conn.exec_params("INSERT INTO articles (title, author, original_body) VALUES ($1, $2, $3)", [@title, @author, @body])
-      # binding.pry
-      redirect "/articles"
+      if logged_in?
+        @title = params[:title]
+        # @user = params[:user]
+        @body = params[:body]
+        # binding.pry
+        conn.exec_params("INSERT INTO articles (title, c_id, original_body) VALUES ($1, $2, $3)", [@title,
+          session[:user_id], @body])
+        redirect "/articles"
+      else
+        redirect "/"
+      end
     end
 
     put "/articles/:id" do
-      @article_id = params[:id].to_i
-      @title = params[:title]
-      @latest_body = params[:body]
-      conn.exec_params("UPDATE articles SET title = $1 WHERE id = #{@article_id}", [@title])
-      # binding.pry
-      redirect "/articles"
+      if logged_in?
+      end
+        @article_id = params[:id].to_i
+        @title = params[:title]
+        @latest_body = params[:body]
+        conn.exec_params("UPDATE articles SET title = $1 WHERE id = #{@article_id}", [@title])
+        # binding.pry
+        redirect "/articles"
     end
 
     get "/colleagues" do
+      logged_in?
       @colleagues = conn.exec "SELECT * FROM colleagues"
       # binding.pry
       erb :colleagues
     end
 
+    delete "/colleagues" do
+      @id_to_delete = params[:id].to_i
+      conn.exec "DELETE * FROM colleagues WHERE id = #{@id_to_delete}"
+      # binding.pry
+      redirect "/"
+    end
+
     get "/colleagues/:id" do
+      logged_in?
       @colleague_id = params[:id].to_i
       @colleague = conn.exec "SELECT * FROM colleagues WHERE id=#{@colleague_id}"
       # binding.pry
@@ -88,7 +108,11 @@ module TheWikinian
     end
 
     get "/signup" do
+      if logged_in?
+        erb :index
+      else
         erb :signup
+      end
     end
 
     post "/signup" do
@@ -100,11 +124,16 @@ module TheWikinian
           @password = BCrypt::Password::create(params[:pass_confirm])
           @email = params[:email]
           @profile_pic = params[:profile_pic]
-          @colleague = conn.exec_params(
+
+          conn.exec_params(
             "INSERT INTO colleagues (username, password, email, profile_pic) VALUES ($1, $2, $3, $4)",
             [@username, @password, @email, @profile_pic]
           )
-          session[:user_id] = @colleague["id"]
+          @colleague = conn.exec("SELECT id FROM colleagues WHERE username = '#{@username}'")
+          # binding.pry
+# SIGN UP
+          session[:user_id] = @colleague[0]["id"].to_i
+# SESSION[:USER_ID]
           redirect "/"
       end
     end
@@ -125,13 +154,17 @@ module TheWikinian
         @username = params[:username]
         @password = params[:password]
         @colleague = conn.exec_params(
-          "SELECT * FROM colleagues WHERE username=$1 LIMIT 1",
+          "SELECT * FROM colleagues WHERE username=$1",
           [@username]
         ).first
         # binding.pry
-        if @colleague["username"] == @username && BCrypt::Password::new(@colleague["password"]) == @password
-          session[:user_id] = @colleague["id"]
+        if @colleague && BCrypt::Password::new(@colleague["password"]) == @password
+# LOG IN
+          session[:user_id] = @colleague["id"].to_i
+# SESSION[:USER_ID]
           redirect "/"
+        else
+          erb :login
         end
       end
     end

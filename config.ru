@@ -7,4 +7,5 @@ require "faker"
 
 require_relative "server"
 
+# require "method::override"
 run TheWikinian::Server
