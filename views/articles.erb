@@ -23,7 +23,7 @@
   <% end %>
 <% else %>
   <article>
-    <h2><%= @article[0]["title"] %></h2>
+    <h2 class="block_me"><%= @article[0]["title"] %></h2>
     <h3>Author: <a href="../colleagues/<%= @article[0]["c_id"] %>"><%= @article[0]["username"] %></a> - <%= @article[0]["latest_post_ts"] %></h3><br />
     <p id="latest_body "><%= @article[0]["latest_body"] %><p><br />
     <p>Category: <%= @article[0]["tag"] %><p>
