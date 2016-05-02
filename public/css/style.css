@@ -33,6 +33,10 @@ small {
   font-size: .75em;
 }
 
+a {
+  text-decoration: none;
+}
+
 ol, ul {
   list-style: none;
 }
@@ -76,27 +80,33 @@ body {
 a.logo {
   display: block;
   background: url(../img/thewiki.png) 0 0 no-repeat;
-  height: 135px;
-  width: 299px;
+  height: 90px;
+  width: 25%;
   float: left;
 }
 
 header {
-  padding: 30px;
+  padding: 2em;
   background-color: #bbb;
   color: white;
 }
 
+header nav ul, header nav form {
+  vertical-align: middle;
+  margin-top: 2%;
+}
+
 header nav form {
-  width: 40%;
-    float: right;
-    margin-right: 10%;
+  width: 25%;
+  float: right;
 }
 
 header nav ul {
+  margin-top: 3%;
   float: right;
-    text-align: right;
-  }
+  text-align: right;
+}
+
 #hideDelete, #hideNew, #hideNew2, #hideEdit {
   display: none;
   margin-top: 9%;
@@ -106,13 +116,29 @@ header nav ul {
   color: red;
 }
 
+#header_nav li {
+  display:inline;
+}
+
+#aside_nav {
+  margin-top: 15%;
+  line-height: 2.5em;
+}
+
 .inline {
   display: inline;
 }
 
+.block_me {
+  display: block;
+  float: none;
+}
+
+
 h1 {
-  font-size: 3em;
+  font-size: 2.5em;
   margin: 2%;
+  text-align: center;
 }
 
 h2 {
@@ -125,7 +151,7 @@ h2 {
 /* Footer */
 
 footer {
-  margin-top: 120px;
+  margin-top: 90px;
   padding: 2%;
   background-color: #bbb;
   color: white;
@@ -133,7 +159,6 @@ footer {
 
 footer small { float: left; }
 footer ul { float: right; }
-
 footer ul li { display: inline-block; margin-right: 1em; }
 footer ul li a {text-decoration: none; }
 footer ul li a:hover { color: #fff; text-decoration: none; }

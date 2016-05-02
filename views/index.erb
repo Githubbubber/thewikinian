@@ -15,9 +15,9 @@
 
 <h1>Popular contributors</h1>
 <% @articles.each do |article| %>
-  <div class="inline">
+  <div class="inline three columns">
     <a href="/colleagues/<%= article["id"] %>">
-      <img src="<%= article["profile_pic"] %>" alt="<%= article["username"] %>">
-    </a><%= article["username"] %>
+      <img src="<%= article["profile_pic"] %>" alt="<%= article["username"] %>" tooltip="<%= article["username"] %>" title="<%= article["username"] %>" />
+    </a>
   </div>
 <% end %>
