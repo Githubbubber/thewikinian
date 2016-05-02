@@ -22,7 +22,16 @@ module TheWikinian
     end
 
     def conn
-      PG.connect(dbname: "thewikinian")
+        if ENV["RACK_ENV"] == "production"
+            PG.connect(
+                dbname: ENV["POSTGRES_DB"],
+                host: ENV["POSTGRES_HOST"],
+                password: ENV["POSTGRES_PASS"],
+                user: ENV["POSTGRES_USER"]
+             )
+        else
+            PG.connect(dbname: "thewikinian")
+        end
     end
 
     def current_user

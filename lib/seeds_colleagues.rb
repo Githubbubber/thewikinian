@@ -1,8 +1,17 @@
 require 'faker'
 require 'pg'
 
-conn = PG.connect(dbname: "thewikinian")
 
+if ENV["RACK_ENV"] == "production"
+    conn = PG.connect(
+        dbname: ENV["POSTGRES_DB"],
+        host: ENV["POSTGRES_HOST"],
+        password: ENV["POSTGRES_PASS"],
+        user: ENV["POSTGRES_USER"]
+     )
+else
+    conn = PG.connect(dbname: "thewikinian")
+end
 conn.exec("DROP TABLE IF EXISTS colleagues")
 
 conn.exec("CREATE TABLE colleagues (
