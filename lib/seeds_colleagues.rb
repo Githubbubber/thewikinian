@@ -7,9 +7,9 @@ conn.exec("DROP TABLE IF EXISTS colleagues")
 
 conn.exec("CREATE TABLE colleagues (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(25) NOT NULL,
+  username VARCHAR(25) UNIQUE NOT NULL,
   password VARCHAR(225) NOT NULL,
-  email VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
   profile_pic VARCHAR(225)
   )"
 )

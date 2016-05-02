@@ -11,8 +11,6 @@ conn.exec("CREATE TABLE categories (
   )"
 )
 
-conn.exec("INSERT INTO categories (a_id, tag) VALUES (1, 'Documents')")
-conn.exec("INSERT INTO categories (a_id, tag) VALUES (2, 'Events')")
-conn.exec("INSERT INTO categories (a_id, tag) VALUES (3, 'Happy Hour')")
-conn.exec("INSERT INTO categories (a_id, tag) VALUES (3, 'Vacation time')")
-conn.exec("INSERT INTO categories (a_id, tag) VALUES (3, 'Events')")
+5.times do |x|
+  conn.exec("INSERT INTO categories (a_id, tag) VALUES (#{x+1}, 'Documents')")
+end
