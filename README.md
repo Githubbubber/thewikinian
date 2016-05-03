@@ -5,6 +5,7 @@
 **WDI Project #2** - The Wikinian is a Ruby-based internal wiki app for "Henrietta", 
 our pretend client for project #2. Henrietta is a business magnate and wants to create a internally facing wiki for her organization. She wants her employees to be able to write articles in order to inform colleagues about their insights.
 
+The users/members are colleagues employed by Henrietta's company.
 
 ## Deliverables
 
@@ -25,9 +26,17 @@ our pretend client for project #2. Henrietta is a business magnate and wants to 
 - Wireframe using Skeleton framework
 - CRUD routes (create, read, update, delete for app data)
 
+
 ## Instructions
-1. Create a clone in a local directory from Github: 
+1. The Wikinian can be found here: 
+    - Cloning to your local directory at git@github.com:Githubbubber/thewikinian.git (instructions can be found here: https://help.github.com/articles/cloning-a-repository/)
+        OR
+    - Visiting the heroku-hosted site here: https://thewikinian.herokuapp.com/
+- Take a look at the articles users contributed. 
+- Sign up to become a member of The Wikinian community.
+- Participate in article entry edits, or to add your own articles: Add categories, keep track of other contributors' articles/edits, etc.
+
 
 ## Notes
 - The viewer won't be able to see the form to post an article unless they are logged in, nor will they be able to edit any current articles.
-- Colleagues can delete their own account but cannot delete an article once it's posted. This is to maintain the flow of discussion, as the wiki was originally intended.
+- Users can delete their own account but cannot delete an article once it's posted. This is to maintain the flow of discussion, as the wiki was originally intended.
