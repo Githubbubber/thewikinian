@@ -1,0 +1,33 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--11-col"><h1>Crazy Faker posts</h1></div>
+</div>
+
+
+<div class="mdl-grid">
+<% @posts.each do |post| %>
+  <div class="mdl-cell mdl-cell--2-col"></div>
+  <div class="mdl-cell mdl-cell--8-col">
+    <h3><a href="posts/<%= post.id %>"><%= post.title %></a></h3>
+    by <%= post.author %>
+  </div>
+  <div class="mdl-cell mdl-cell--2-col"></div>
+<% end %>
+</div>
+
+<a name="newPost"></a>
+<!-- link to new post here -->
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col"></div>
+  <div class="mdl-cell mdl-cell--5-col">
+    <h2>'Faker'ize a post</h2>
+    <span>What's your flavor?</span>
+    <br/>
+    <%= form_tag("/posts", method: "create") do %>
+      <%= submit_tag "Hipster" %>
+      <%= submit_tag "Hacker" %>
+      <%= submit_tag "Star Wars" %>
+    <% end %>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col"></div>
+</div>

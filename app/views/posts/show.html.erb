@@ -1,0 +1,21 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--11-col"><h1><%= @post.title %></h1></div>
+</div>
+
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--2-col"></div>
+  <div class="mdl-cell mdl-cell--8-col">
+    <h3><%= @post.title %></h3>
+    <p>Written by: <%= @post.author %></p>
+    <p><%= @post.content %></p>
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+    <p>
+      <%= link_to "Back to all posts", posts_url %>
+    </p>
+  </div>
+</div>
+
+
