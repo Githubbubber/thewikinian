@@ -21,3 +21,4 @@ notes
 app/assets/.DS_Store
 .DS_Store
 *.log
+log/development.log
