@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-# Latest Ruby version as of 2/12/18
-# rvm install version#
-#ruby 2.4.1
 gem 'activesupport'#, '~> 4.2.2'
 
 gem 'faker'
