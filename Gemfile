@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
+# Latest Ruby version as of 2/12/18
+# rvm install version#
+#ruby 2.4.1
+gem 'activesupport'#, '~> 4.2.2'
+
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '~> 4.2.8'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
