@@ -4,7 +4,7 @@ ruby '2.4.1'
 gem 'activesupport'#, '~> 4.2.2'
 
 # Use postgresql as the database for Active Record in production
-#gem 'pg'
+gem 'pg', '1.0.0'
 
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -45,11 +45,8 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg', '1.0.0'
   gem 'rails_12factor'
 end
