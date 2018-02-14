@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 gem 'activesupport'#, '~> 4.2.2'
+
+# Use postgresql as the database for Active Record in production
+#gem 'pg'
 
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
