@@ -2,6 +2,7 @@ require 'bcrypt'
 require 'faker'
 require 'pry'
 require 'pg'
+require 'sinatra'
 
 # thewikinian
 #   articles    (id, title, c_id, original_body)
