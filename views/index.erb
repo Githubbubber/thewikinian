@@ -1,0 +1,23 @@
+<% if current_user %>
+  <%= current_user["username"] %>
+<% end %>
+
+<h1>Popular posts</h1>
+<% @articles.each do |article| %>
+  <article>
+    <h2><a href="/articles/<%= article["id"] %>">
+    <%= article["title"] %></a></h2>
+    <span><a href="/colleagues/<%= article["c_id"] %>">
+    <%= article["username"] %></a></span>
+  </article>
+  <hr />
+<% end %>
+
+<h1>Popular contributors</h1>
+<% @articles.each do |article| %>
+  <div class="inline three columns">
+    <a href="/colleagues/<%= article["id"] %>">
+      <img src="<%= article["profile_pic"] %>" alt="<%= article["username"] %>" tooltip="<%= article["username"] %>" title="<%= article["username"] %>" />
+    </a>
+  </div>
+<% end %>

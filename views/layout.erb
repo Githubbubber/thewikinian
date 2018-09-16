@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Wikinian</title>
+  <link rel="icon" type="image/png" href="/img/tw_favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/js/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="/css/normalize.css" />
+  <link rel="stylesheet" href="/css/skeleton.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="container">
+    <header class="row">
+      <nav class="twelve columns">
+        <a href="/" class="logo"></a>
+        <ul id="header_nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/signup">Sign up</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
+        <form action="/" method="get" accept-charset="utf-8">
+          <input type="text" name="search" placeholder="Article, colleague, etc..." class="form-control" s/>
+        </form>
+      </nav>
+    </header>
+
+    <section class="row">
+      <aside class="two columns">
+        <ul id="aside_nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/abouttw">About TW</a></li>
+          <li><a href="/signup">Sign up</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/colleagues">TW Members</a></li>
+          <li><a href="/articles">Articles</a></li>
+        </ul>
+      </aside>
+      <div class="ten columns">
+        <%= yield %>
+      </div>
+    </section>
+
+    <footer class="row">
+      <nav class="twelve columns">
+        <small>&copy; 2016 The Wikinian, a wiki app by Mekesia Brown</small>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/abouttw">About TW</a></li>
+        </ul>
+      </nav>
+    </footer>
+  <script src="/js/script.js"></script>
+</body>
+</html>

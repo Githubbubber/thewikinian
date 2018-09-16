@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # That Crazy Faker
 That Crazy Faker is a Ruby on Rails app that generates funny Faker data. Users can enjoy reading them, and can generate new posts too.
 
@@ -8,3 +9,43 @@ I'd love for folks new to Ruby on Rails to clone this repo to their heart's cont
 Directions for installing the gem can be found on the [Stympy Faker page](https://github.com/stympy/faker).
 
 
+=======
+#The Wikinian
+
+*The Wikinian* is a Ruby-based internal wiki app for "Henrietta", a pretend client for project #2. Henrietta is a business magnate who wants to create a internally facing wiki for her organization. She wants her employees to be able to write articles in order to inform colleagues about their insights.
+
+The users/members are colleagues employed by Henrietta's company.
+
+## Deliverables
+
+* `README.md` (in the root folder of your project) that includes:
+  * The project's name and description
+  * Your feature spec with links to pictures of your wireframes
+  * A representation of your ERD - a picture of a whiteboard drawing will work
+  just fine here
+  * APIs or modules used and descriptions of each
+  * Instructions for downloading the code and running it on localhost
+
+
+## Process
+
+1.Trello board with `Backlog`, `Doing`, and `Done` lists
+    - https://trello.com/b/ssjQUtDT
+- Entity Relationship Diagram: https://github.com/Githubbubber/githubbubber.github.io/blob/master/thewikinian/public/img/Erd.jpg
+- Wireframe using Skeleton CSS framework
+- CRUD routes (create, read, update, delete HTTP requests for handling app data)
+
+
+## Instructions
+- Clone to your local directory at [git@github.com:Githubbubber/thewikinian.git](https://help.github.com/articles/cloning-a-repository/)
+        OR
+- [Visiting the heroku-hosted site](https://thewikinian.herokuapp.com/)
+- Take a look at the articles users contributed. 
+- Sign up to become a member of The Wikinian community.
+- Participate in article entry edits, or to add your own articles: Add categories, keep track of other contributors' articles/edits, etc.
+
+
+## Notes
+- The viewer won't be able to see the form to post an article unless they are logged in, nor will they be able to edit any current articles.
+- Users can delete their own account but cannot delete an article once it's posted. This is to maintain the flow of discussion, as the wiki was originally intended.
+>>>>>>> e8de6b16de3809b790761d5ef53da908863f3791

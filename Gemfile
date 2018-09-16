@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 source 'https://rubygems.org'
 ruby '2.2.6'
 
@@ -50,3 +51,14 @@ end
 group :production do
   gem 'rails_12factor'
 end
+=======
+source "https://rubygems.org"
+
+gem "pg"
+gem "pry"
+gem "rack"
+gem "faker"
+gem "bcrypt"
+gem "sinatra"
+gem "sinatra-contrib"
+>>>>>>> e8de6b16de3809b790761d5ef53da908863f3791

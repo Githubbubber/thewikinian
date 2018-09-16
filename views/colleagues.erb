@@ -1,0 +1,50 @@
+<% if @colleagues %> <!-- ALL USER ACCOUNTS -->
+  <% @colleagues.each do |colleague| %>
+    <article>
+      <a href="/colleagues/<%= colleague["id"] %>">
+        <img src="<%= colleague['profile_pic'] %>" alt="<%= colleague["username"] %>" />
+        <span><%= colleague["username"] %></span>
+      <a>
+    </article>
+    <hr />
+  <% end %>
+<% else %><!-- Individual user account -->
+  <article>
+    <img src="<%= @colleague[0]["profile_pic"] %>" alt="<%= @colleague[0]["username"] %>">
+    <span><%= @colleague[0]["username"] %></span>
+    <p><%= @colleague[0]["email"] %></p>
+  </article>
+  <% if current_user %>
+    <%= current_user["username"] %> &nbsp; <%= @colleague[0]['id'] %>
+    <select name="u_or_d" id="changed">
+      <option>Options</option>
+      <option value="edit">Edit acct info</option>
+      <option value="d">Delete acct</option>
+    </select>
+
+    <form id="hideEdit" action="/colleagues/<%= @colleague[0]['id'] %>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <label for="username">Username: </label>
+        <input name="username" type="text" autofocus maxlength=25 title="Please choose a username with up to 25 characters" required /><br />
+      <label for="email">Email: </label>
+        <input name="email" type="email" maxlength=50 title="Emails cannot be longer than 50 characters" required /><br />
+      <label for="password_frm">Previous password: </label>
+        <input name="password_frm" type="password" pattern="[\W\w]{8,15}" title="Password must be between 8 and 15 characters long" required /><br />
+      <label for="password_new">Password: </label>
+        <input name="password_new" type="password" pattern="[\W\w]{8,15}" title="Password must be between 8 and 15 characters long" required />
+      &nbsp; Confirm password:
+        <input name="pass_new_confirm" type="password" pattern="[\W\w]{8,15}" required /><br />
+      <label for="profile_pic">Profile pic (url): </label>
+        <input name="profile_pic" type="url" placeholder="http://www.url.com/pic.png" maxlength=225 title="Pics must be hosted online" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <form id="hideDelete" action="/colleagues" method="post">
+      <p>Are you sure you want to delete your profile?</p>
+      <input type="hidden" name="_method" value="delete" />
+      <input type="radio" name="id" value="<%= @colleague[0]['id'] %>" /> Yes
+      <input type="radio" />Never mind<br />
+      <button type="submit">Yes, delete this account</button>
+    </form>
+  <% end %>
+<% end %>
