@@ -1,5 +1,3 @@
-![](https://raw.githubusercontent.com/Githubbubber/githubbubber.github.io/master/thewikinian/public/img/thewiki.png)
-
 #The Wikinian
 
 *The Wikinian* is a Ruby-based internal wiki app for "Henrietta", a pretend client for project #2. Henrietta is a business magnate who wants to create a internally facing wiki for her organization. She wants her employees to be able to write articles in order to inform colleagues about their insights.
